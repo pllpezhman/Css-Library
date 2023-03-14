@@ -1,0 +1,88 @@
+// @mixin path($parentWidth,$childWidth,$childCount,$classes,$anim){
+//     $childTranslate:5000/$childWidth;
+//     $childRotate:360/$childCount;
+//     position: absolute;
+//     width: $parentWidth#{%};
+//     padding-top: $parentWidth#{%};
+//     border-radius:50%;
+//     top:50%;
+//     left:50%;
+//     border: 1px solid #000;
+//     @if($anim==true){
+    
+//         @extend %rotate-0-360;
+//     }
+//     &{
+//         .circle{
+            
+//             width:$childWidth#{%};
+//             padding-top: $childWidth#{%};
+//             position: absolute;
+//             top:50%;
+//             left:50%;
+//             margin-left: -$childWidth/2#{%};
+//             margin-top: -$childWidth/2#{%};
+//             border-radius:50%;
+//             background-color: tomato;
+//             &::before{
+    
+//                 content: "a";
+//                 position: absolute;
+//                 top: 50%;
+//                 left: 50%;
+//                 transform: translate(-50%,-50%);
+//                 font-family: 'fontello';
+//             }
+//             @if($anim==true){
+    
+//              &::before{
+    
+    
+//                 @extend  %rotate-reverse-0-360;
+    
+//              }   
+    
+//             }
+//         }
+//         @for $i from 0 through ($childCount - 1){
+    
+//             #circle#{$i}{
+    
+//                 transform: rotate(#{$childRotate*$i}deg) translateX($childTranslate#{%}) rotate(#{-$childRotate*$i}deg);
+              
+//             } 
+    
+//         }
+//         @each $class in $classes{
+//            #circle#{nth($class,2)}{
+//             &:before{
+ 
+//                     @extend %#{nth($class,1)}
+//             }
+
+//            }
+//         }
+//     } 
+    
+ @mixin respond($device){
+
+
+    @if($device==des){
+
+        @media screen and (min-width:900px){
+            @content;
+        }
+    }
+    @if($device==tab){
+
+        @media screen and (max-width:900px){
+            @content;
+        }
+    }
+    @if($device==mob){
+        @media screen and (max-width:600px){
+            @content;
+        }
+    }
+
+ }
